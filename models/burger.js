@@ -15,13 +15,13 @@ var burgers = {
         });
     },
     // cols and vals are arrays
-    insertOne: function (oneBurger, callback) {
-        orm.create(function (result) {
+    insertOne: function (burger_name, callback) {
+        orm.insertOne(burger_name,function (result) {
             callback(result);
         });
     },
     updateOne: function (id, callback) {
-        orm.updateOne(function (result) {
+        orm.updateOne(id,function (result) {
             callback(result);
         });
     }

@@ -15,21 +15,19 @@ var orm = {
 
     },
 // add a burger to the list
-    insertOne: function (oneBurger, callback) {
-            connection.query('INSERT INTO burgers (burger_name, devoured) VALUES (?,?)',[oneBurger,'1'], function(err,result){
+    insertOne: function (burger_name, callback) {
 
-
-                if (err) throw err;
-                callback(result);
-
-            });
+        connection.query("INSERT INTO burgers (burger_name, devoured) VALUES (?, ?) ", [burger_name, "0"], function (err, result) {
+            if (err) throw err;
+            callback(result);
+        });
 
     },
 // update a burger to whether its eaten or not
-    updateOne: function (id,callback) {
-        connection.query('UPDATE burgers SET devoured = 0  WHERE id = ?',id,function(err,result){
+    updateOne: function (id, callback) {
+        connection.query('UPDATE burgers SET devoured = 1  WHERE id = ?', id, function (err, result) {
             if (err) throw err;
-                callback(result);
+            callback(result);
         });
 
     }
